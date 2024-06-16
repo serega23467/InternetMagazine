@@ -94,13 +94,13 @@ namespace InternetMagazine
                 MagazineUser user = DatabaseContext.GetDB().Users.FirstOrDefault(u => u.Id == order.UserId);
                 if (user != null)
                 {
-                    if (users.ContainsKey(user.UserName))
+                    if (users.ContainsKey(user.UserLogin))
                     {
                         users[user.UserName]++;
                     }
                     else
                     {
-                        users.Add(user.UserName, 1);
+                        users.Add(user.UserLogin, 1);
                     }
                 }
             }
