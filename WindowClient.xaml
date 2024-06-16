@@ -1,0 +1,57 @@
+﻿<Window x:Class="InternetMagazine.WindowClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InternetMagazine"
+        mc:Ignorable="d"
+    Height="700" Width="1273" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlockUserStatus" HorizontalAlignment="Left" Margin="15,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24"/>
+        <TextBlock x:Name="textBlockUserLogin" HorizontalAlignment="Left" Margin="14,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock x:Name="textBlockUserName" HorizontalAlignment="Left" Margin="15,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
+        <TabControl x:Name="tabControl" Grid.Row="1" SelectedIndex="0" FontSize="20">
+            <TabItem Header="Products">
+                <DataGrid x:Name="dataGridProducts" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="16">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding ImageBitmap}" Width="50" Height="50" Stretch="Fill"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="Auto"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding ProductName}" Width="Auto"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding ProductPrice}" Width="Auto"/>
+                        <DataGridTextColumn Header="Has in garbage" Binding="{Binding HasInGarbageString}" Width="Auto"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding ProductDescription}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Orders">
+                <DataGrid x:Name="dataGridOrders" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="16">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Client login" Binding="{Binding UserLogin}" Width="Auto"/>
+                        <DataGridTextColumn Header="Courier login" Binding="{Binding CourierLogin}" Width="Auto"/>
+                        <DataGridTextColumn Header="Product" Binding="{Binding ProductName}" Width="Auto"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding StatusName}" Width="Auto"/>
+                        <DataGridTextColumn Header="Adress" Binding="{Binding Adress}" Width="*"/>
+                        <DataGridTextColumn Header="Comment" Binding="{Binding Comment}" Width="*"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding DateString}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <TextBox x:Name="textBoxSearchProduct" HorizontalAlignment="Left" Margin="651,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" FontSize="24" TextChanged="textBoxSearchProduct_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="560,38,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" FontSize="24"/>
+        <Button x:Name="buttonUpdateList" Content="Update list" HorizontalAlignment="Left" Margin="888,0,0,0" VerticalAlignment="Center" FontSize="24" Click="buttonUpdateList_Click"/>
+        <Button x:Name="buttonOrder" Content="Order product" HorizontalAlignment="Left" Margin="1032,32,0,0" VerticalAlignment="Top" FontSize="24" Click="buttonOrder_Click"/>
+    </Grid>
+</Window>

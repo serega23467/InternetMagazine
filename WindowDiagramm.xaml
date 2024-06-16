@@ -1,0 +1,81 @@
+﻿<Window x:Class="InternetMagazine.WindowDiagramm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InternetMagazine"
+        mc:Ignorable="d"
+        Height="600" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlockDiagrammName" HorizontalAlignment="Left" Margin="10,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="26"/>
+        <ListBox x:Name="listBoxOrders" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding StatusName}" FontSize="14" Grid.Row="0"/>
+                        <TextBlock Text="{Binding ProductName}" FontSize="10" Grid.Row="1"/>
+                        <TextBlock Text="User login" FontSize="10" Grid.Row="2"/>
+                        <TextBlock Text="{Binding UserLogin}" Margin="70,0,0,0" FontSize="10" Grid.Row="2"/>
+                        <TextBlock Text="Courier login" FontSize="10" Grid.Row="3"/>
+                        <TextBlock Text="{Binding CourierLogin}" Margin="70,0,0,0" FontSize="10" Grid.Row="3"/>
+                        <TextBlock Text="{Binding DateString}" FontSize="10" Grid.Row="4"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="listBoxPopularProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Key}" FontSize="16" Grid.Row="0"/>
+                        <TextBlock Text="{Binding Value}" FontSize="14" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="listBoxActivityClients" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Key}" FontSize="16" Grid.Row="0"/>
+                        <TextBlock Text="{Binding Value}" FontSize="14" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="listBoxIncomeByMonth" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Key}" FontSize="16" Grid.Row="0"/>
+                        <TextBlock Text="$" FontSize="14" Grid.Row="1"/>
+                        <TextBlock Text="{Binding Value}" Margin="10,0,0,0"  FontSize="14" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

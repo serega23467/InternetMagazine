@@ -1,0 +1,127 @@
+﻿<Window x:Class="InternetMagazine.WindowAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InternetMagazine"
+        mc:Ignorable="d"
+        Height="700" Width="1273" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="buttonListOrdersByStatus" Content="List orders by status" HorizontalAlignment="Left" Margin="560,38,0,0" VerticalAlignment="Top" Click="buttonListOrdersByStatus_Click"/>
+        <Button x:Name="buttonListMostPopularProducts" Content="List popular products" HorizontalAlignment="Left" Margin="674,38,0,0" VerticalAlignment="Top" Click="buttonListMostPopularProducts_Click"/>
+        <Button x:Name="buttonListActivityClients" Content="List activity clients" HorizontalAlignment="Left" Margin="795,38,0,0" VerticalAlignment="Top" Click="buttonListActivityClients_Click"/>
+        <Button x:Name="buttonListIncomeByMonths" Content="List income by months" HorizontalAlignment="Left" Margin="899,38,0,0" VerticalAlignment="Top" Click="buttonListIncomeByMonths_Click"/>
+        <TabControl x:Name="tabControl" Grid.Row="1" SelectedIndex="0" FontSize="20">
+            <TabItem Header="Users">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGridAdminUsers" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dataGridAdminUsers_SelectionChanged" FontSize="16">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Login" Binding="{Binding UserLogin}" Width="Auto"/>
+                            <DataGridTextColumn Header="Role" Binding="{Binding StatusString}" Width="Auto"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding UserName}" Width="Auto"/>
+                            <DataGridTextColumn Header="Phone number" Binding="{Binding PhoneNumber}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="buttonUpdateUsers" Grid.Column="1" Content="Update list" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="114" FontSize="20" Click="buttonUpdateUsers_Click"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,58,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,90,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,130,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,166,0,0" TextWrapping="Wrap" Text="Role" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,209,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,259,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" FontSize="20" Width="103"/>
+
+                    <TextBlock x:Name="textBlockUserId" Grid.Column="1" HorizontalAlignment="Left" Margin="147,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBox x:Name="textBoxEditLogin" Grid.Column="1" HorizontalAlignment="Left" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="20" MaxLength="20" PreviewTextInput="textBoxEditLogin_PreviewTextInput"/>
+                    <TextBox x:Name="textBoxEditName" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="20"/>
+                    <ComboBox x:Name="comboBoxEditStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="147,166,0,0" VerticalAlignment="Top" Width="202" Height="32" FontSize="20"/>
+                    <TextBox x:Name="textBoxEditPhone" Grid.Column="1" HorizontalAlignment="Left" Margin="145,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="29" MaxLength="12" PreviewTextInput="textBoxEditPhone_PreviewTextInput"/>
+                    <TextBox x:Name="textBoxUserPass" Grid.Column="1" HorizontalAlignment="Left" Margin="145,259,0,0" VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="20"/>
+                    <Button x:Name="buttonEditUser" Grid.Column="1" Content="Edit user" HorizontalAlignment="Left" Margin="135,401,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditUser_Click"/>
+                    <Button x:Name="buttonAddUser" Grid.Column="1" Content="Add user" HorizontalAlignment="Left" Margin="31,401,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonAddUser_Click"/>
+                    <Button x:Name="buttonDeleteUser" Grid.Column="1" Content="Delete user" HorizontalAlignment="Left" Margin="234,401,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonDeleteUser_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Categories">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGridCategories" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="16" SelectionChanged="dataGridCategories_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Category" Binding="{Binding CategoryName}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="buttonUpdateCategories" Grid.Column="1" Content="Update list" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="114" FontSize="20" Click="buttonUpdateCategories_Click"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="13,71,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="13,111,0,0" TextWrapping="Wrap" Text="Category" VerticalAlignment="Top" FontSize="20"/>
+
+                    <TextBlock x:Name="textBlockCategoryId"  Grid.Column="1" HorizontalAlignment="Left" Margin="149,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBox x:Name="textBoxCategoryName" Grid.Column="1" HorizontalAlignment="Left" Margin="148,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="20" MaxLength="20"/>
+
+                    <Button x:Name="buttonEditCategory" Grid.Column="1" Content="Edit category" HorizontalAlignment="Left" Margin="190,401,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditCategory_Click"/>
+                    <Button x:Name="buttonAddCategory" Grid.Column="1" Content="Add category" HorizontalAlignment="Left" Margin="31,401,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonAddCategory_Click"/>
+                    <Button x:Name="buttonDeleteCategory" Grid.Column="1" Content="Delete category" HorizontalAlignment="Left" Margin="31,453,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonDeleteCategory_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Products">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGridProducts" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="16" SelectionChanged="dataGridProducts_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ImageBitmap}" Width="50" Height="50" Stretch="Fill"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="Auto"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding ProductName}" Width="Auto"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding ProductPrice}" Width="Auto"/>
+                            <DataGridTextColumn Header="Has in garbage" Binding="{Binding HasInGarbageString}" Width="Auto"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding ProductDescription}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="buttonUpdateProducts" Grid.Column="1" Content="Update list" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="114" FontSize="20" Click="buttonUpdateProducts_Click"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,58,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,90,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,130,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Category"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="12,329,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="12,256,0,0" TextWrapping="Wrap" Text="Has in garbage" VerticalAlignment="Top" FontSize="20" Width="103"/>
+
+                    <TextBlock x:Name="textBlockProductId" Grid.Column="1" HorizontalAlignment="Left" Margin="147,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBox x:Name="textBoxEditProductName" Grid.Column="1" HorizontalAlignment="Left" Margin="147,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="20" MaxLength="20"/>
+                    <TextBox x:Name="textBoxEditProductDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="200" Height="62"/>
+                    <ComboBox x:Name="comboBoxEditCategory" SelectedIndex="0" Grid.Column="1" HorizontalAlignment="Left" Margin="147,196,0,0" VerticalAlignment="Top" Width="202" Height="32" FontSize="20"/>
+                    <TextBox x:Name="textBoxEditPrice" Grid.Column="1" HorizontalAlignment="Left" Margin="146,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" FontSize="20" Height="29" MaxLength="9" PreviewTextInput="textBoxEditPhone_PreviewTextInput"/>
+                    <ComboBox x:Name="comboBoxHasInGarbage" Grid.Column="1" HorizontalAlignment="Left" Margin="146,256,0,0" VerticalAlignment="Top" Width="203" FontSize="20" />
+                    <Button x:Name="buttonEditProduct" Grid.Column="1" Content="Edit product" HorizontalAlignment="Left" Margin="10,504,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditProduct_Click" Width="116"/>
+                    <Button x:Name="buttonAddProduct" Grid.Column="1" Content="Add product" HorizontalAlignment="Left" Margin="11,461,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonAddProduct_Click"/>
+                    <Button x:Name="buttonDeleteProduct" Grid.Column="1" Content="Delete product" HorizontalAlignment="Left" Margin="155,504,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonDeleteProduct_Click"/>
+                    <Image x:Name="imageProduct" Grid.Column="1" HorizontalAlignment="Left" Height="99" Margin="147,377,0,0" VerticalAlignment="Top" Width="100" Stretch="Fill" />
+                    <Button x:Name="buttonAddImage" Grid.Column="1" Content="Load image" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonAddImage_Click" Width="115"/>
+                    <TextBlock x:Name="textBlockImageBitmap" Visibility="Hidden" Grid.Column="1" HorizontalAlignment="Left" Margin="298,392,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TextBlock x:Name="textBlockUserStatus" HorizontalAlignment="Left" Margin="15,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24"/>
+        <TextBlock x:Name="textBlockUserLogin" HorizontalAlignment="Left" Margin="14,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock x:Name="textBlockUserName" HorizontalAlignment="Left" Margin="15,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
+    </Grid>
+</Window>
