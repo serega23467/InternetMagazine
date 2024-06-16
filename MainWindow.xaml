@@ -8,8 +8,8 @@
         Height="526" Width="448" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="182,29,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" FontSize="32"/>
-        <TextBox x:Name="textBoxLogin" Text="serega1" HorizontalAlignment="Left" Margin="144,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
-        <PasswordBox x:Name="passwordBoxPass" Password="123456" HorizontalAlignment="Left" Margin="144,213,0,0" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Margin="144,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
+        <PasswordBox x:Name="passwordBoxPass" HorizontalAlignment="Left" Margin="144,213,0,0" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
         <Button x:Name="buttonLogin" Content="Enter" HorizontalAlignment="Left" Margin="67,321,0,0" VerticalAlignment="Top" FontSize="26" Width="154" Click="buttonLogin_Click"/>
         <Button x:Name="buttonRegister" Content="Register" HorizontalAlignment="Left" Margin="271,327,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonRegister_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="79,150,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" FontSize="20"/>
