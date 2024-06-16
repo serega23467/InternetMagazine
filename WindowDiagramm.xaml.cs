@@ -96,7 +96,7 @@ namespace InternetMagazine
                 {
                     if (users.ContainsKey(user.UserLogin))
                     {
-                        users[user.UserName]++;
+                        users[user.UserLogin]++;
                     }
                     else
                     {
